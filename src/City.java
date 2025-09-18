@@ -20,12 +20,16 @@ import java.util.List;
 public class City {
     String name;
 
-    public class Connection {
+    public static class Connection {
         City name;
         int cost;
 
         public Connection(String name, int cost) {
-            this.name = name;
+            if (!name.exists(name)) {
+                this.name = new City(name);
+            } else {
+                this.name = name;
+            }
             this.cost = cost;
         }
 
@@ -43,5 +47,9 @@ public class City {
 
         this.connection = Arrays.stream(connections).toList();
 
+    }
+
+    public boolean exists(City name) {
+        return true;
     }
 }

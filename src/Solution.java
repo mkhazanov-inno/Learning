@@ -1,7 +1,9 @@
 import java.util.Arrays;
 
 class Solution {
+    public static void main(String[] args) {
+        City A = new City("A", new City.Connection("F", 1));
+    }
 
-    City A = new City("A", new City.Connection["F", 1]);
 
 }

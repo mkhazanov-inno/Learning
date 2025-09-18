@@ -3,7 +3,15 @@ import java.util.List;
 
 public class PolyLine {
 
-    List<Point> points = new ArrayList<>();
+    private List<Point> points = new ArrayList<>();
+
+    public List<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(List<Point> points) {
+        this.points = points;
+    }
 
     public PolyLine(Point... pts) {
         if (pts == null) throw new IllegalArgumentException("Incorrect input");
@@ -12,14 +20,14 @@ public class PolyLine {
 
     public PolyLine(int... pts) {
         if (pts.length % 2 != 0) throw new IllegalArgumentException("Incorrect input");
-        for (int i = 0; i < pts.length; i += 2) {
+        for (int i = 0; i < pts.length; i++) {
             this.points.add(new Point(pts[i], pts[i+1]));
         }
     }
 
     public Line[] getLines() {
         ArrayList<Line> out = new ArrayList<>();
-        for (int i = 0; i < points.size(); i += 2) {
+        for (int i = 0; i < points.size()-1; i++) {
             out.add(new Line(points.get(i), points.get(i + 1)));
         }
         return out.toArray(new Line[0]);
