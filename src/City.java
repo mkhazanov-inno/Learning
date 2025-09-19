@@ -18,11 +18,27 @@ import java.util.List;
 
 
 public class City {
-    String name;
+    private String name;
+    private List<Connection> connections;
+
+    private static List<String> allCities = new ArrayList<>();
+
+    public City(String name) {
+        this.name = name;
+        this.connections = new ArrayList<>();
+        allCities.add(name);
+    }
+
+    public City(String name, List<Connection> connections) {
+        this.name = name;
+        this.connections = connections;
+        allCities.add(name);
+    }
+
 
     public static class Connection {
-        City name;
-        int cost;
+        private City destination;
+        private int cost;
 
         public Connection(String name, int cost) {
             if (!name.exists(name)) {
@@ -35,21 +51,4 @@ public class City {
 
     }
 
-    List<Connection> connection = new ArrayList<>();
-
-
-    public City(String name) {
-        this.name = name;
-    }
-
-    public City(String name, Connection... connections) {
-        this.name = name;
-
-        this.connection = Arrays.stream(connections).toList();
-
-    }
-
-    public boolean exists(City name) {
-        return true;
-    }
 }
